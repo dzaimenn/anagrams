@@ -10,29 +10,29 @@ public class AnagramMaker {
     }
 
     private String reverseOneWord(String word) {
-        char[] charSource = word.toCharArray();
-        char[] charFinal = new char[charSource.length];
-        int finalIndex = charSource.length - 1;
+        char[] initialChars = word.toCharArray();
+        char[] resultChars = new char[initialChars.length];
+        int startIndex = 0;
+        int finalIndex = initialChars.length - 1;
 
-        for (int i = 0; i < charSource.length; i++) {
-            if (!(Character.isLetter(charSource[i]))) {
-                charFinal[i] = charSource[i];
+        for (char ch : initialChars) {
+            if (!(Character.isLetter(ch))) {
+                resultChars[startIndex] = ch;
             }
+            startIndex++;
         }
 
-        for (int i = 0; i < charSource.length; i++) {
-            if (Character.isLetter(charSource[i])) {
-                // Checking if the character at charFinal[finalIndex] is a null character
-                if (charFinal[finalIndex] == '\u0000') {
-                    charFinal[finalIndex] = charSource[i];
+        for (char ch : initialChars) {
+            if (Character.isLetter(ch)) {
+                if (resultChars[finalIndex] == 0) {
+                    resultChars[finalIndex] = ch;
                 } else {
-                    charFinal[finalIndex - 1] = charSource[i];
+                    resultChars[finalIndex - 1] = ch;
                 }
                 finalIndex--;
             }
         }
-
-        return new String(charFinal);
+        return new String(resultChars);
     }
 
     private String reverseAllWords(String sourceString) {
