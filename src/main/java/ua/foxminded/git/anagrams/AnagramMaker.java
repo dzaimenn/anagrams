@@ -6,6 +6,9 @@ public class AnagramMaker {
     private final String sourceString;
 
     public AnagramMaker(String sourceString) {
+        if (sourceString == null) {
+            throw new IllegalArgumentException("Source string cannot be null");
+        }
         this.sourceString = sourceString;
     }
 
