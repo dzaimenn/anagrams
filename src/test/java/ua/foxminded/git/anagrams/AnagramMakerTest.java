@@ -10,14 +10,14 @@ class AnagramMakerTest {
     @Test
     void testAnagramMakerWithNull() {
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException actualException = assertThrows(IllegalArgumentException.class, () -> {
             AnagramMaker maker = new AnagramMaker(null);
         });
 
-        assertEquals("Source string cannot be null", exception.getMessage());
+        assertEquals("Source string cannot be null", actualException.getMessage());
     }
 
-    @Test
+    @Testgit add .
     void testAnagramMakerWithEmptyString() {
         AnagramMaker maker = new AnagramMaker("");
         assertEquals("", maker.resultAnagramMaker());
