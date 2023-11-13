@@ -17,7 +17,7 @@ class AnagramMakerTest {
         assertEquals("Source string cannot be null", actualException.getMessage());
     }
 
-    @Testgit add .
+    @Test
     void testAnagramMakerWithEmptyString() {
         AnagramMaker maker = new AnagramMaker("");
         assertEquals("", maker.resultAnagramMaker());
