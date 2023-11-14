@@ -6,6 +6,9 @@ public class AnagramMaker {
     private final String sourceString;
 
     public AnagramMaker(String sourceString) {
+        if (sourceString == null) {
+            throw new IllegalArgumentException("Source string cannot be null");
+        }
         this.sourceString = sourceString;
     }
 
@@ -24,11 +27,10 @@ public class AnagramMaker {
 
         for (char ch : initialChars) {
             if (Character.isLetter(ch)) {
-                if (resultChars[finalIndex] == 0) {
-                    resultChars[finalIndex] = ch;
-                } else {
-                    resultChars[finalIndex - 1] = ch;
+                while (resultChars[finalIndex] != 0) {
+                    finalIndex--;
                 }
+                resultChars[finalIndex] = ch;
                 finalIndex--;
             }
         }
@@ -44,8 +46,11 @@ public class AnagramMaker {
         return stringJoiner.toString();
     }
 
+    public String resultAnagramMaker() {
+        return reverseAllWords(sourceString);
+    }
+
     public void viewAnagramMaker() {
-        String result = reverseAllWords(sourceString);
-        System.out.println(result);
+        System.out.println(resultAnagramMaker());
     }
 }
